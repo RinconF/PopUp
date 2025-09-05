@@ -11,3 +11,190 @@ body {
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+h1 {
+    color: #333;
+}
+
+/* Estilos adicionales */
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background: #0056b3;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Estilos para el dashboard */
+.dashboard {
+    padding: 20px;
+}
+
+
+.dashboard h1 {
+    color: #007BFF;
+}
+.dashboard p {
+    color: #555;
+}
+
+/* Estilos para formularios */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+form input {
+    margin-bottom: 15px;
+}
+form button {
+    align-self: flex-end;
+}
+form button:hover {
+    background: #0056b3;
+}
+/* Estilos para mensajes de error */
+.error {
+    color: red;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+
+/* Estilos para mensajes de éxito */
+.success {
+    color: green;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    .popup {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+
+/* Estilos para enlaces */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+/* Estilos para tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #f4f4f4;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+/* Estilos para formularios de búsqueda */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+
+
+.search-bar input {
+    width: calc(100% - 100px);
+    display: inline-block;
+}
+.search-bar button {
+    width: 80px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.search-bar button:hover {
+    background: #0056b3;
+}
+/* Estilos para notificaciones */
+.notification {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.notification.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.notification.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.notification.info {
+    background-color: #cce5ff;
+    color: #004085;
+}
+.notification.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+/* Estilos para modales */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+.modal-content h2 {
+    margin-top: 0;
+}
