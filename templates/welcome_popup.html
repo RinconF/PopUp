@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <title>Bienvenido</title>
+</head>
+<body>
+    <div class="popup">
+        <h2>¡Bienvenido al sistema!</h2>
+        <a href="{{ url_for('login_view') }}">Ir al login</a>
+    </div>
+</body>
+</html>
