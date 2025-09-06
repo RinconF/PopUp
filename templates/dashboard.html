@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/welcome.css') }}">
     <title>Dashboard - Mi ETIB</title>
 </head>
 <body>
+    <!-- POPUP OVERLAY - Se muestra encima del dashboard -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-popup" id="welcomePopup">
+            <div class="popup-logo">
+                <div class="logo-e">e</div>
+                <span class="logo-text">etib</span>
+            </div>
+            
+            <div class="popup-header">
+                <div class="success-icon">✓</div>
+                <h2>¡Bienvenido al Sistema!</h2>
+            </div>
+            
+            <div class="popup-content">
+                <div class="user-greeting">
+                    <h3>Hola, <span class="username">{{ username }}</span></h3>
+                    <p>Has iniciado sesión exitosamente en MI ETIB</p>
+                </div>
+                
+                <div class="system-info">
+                    <p><strong>Sistema:</strong> MI ETIB v13.06.2025</p>
+                    <p><strong>Hora de acceso:</strong> <span id="currentTime"></span></p>
+                </div>
+            </div>
+            
+            <div class="popup-actions">
+                <button class="continue-btn" id="closePopup">Continuar al Dashboard</button>
+            </div>
+            
+            <div class="countdown" id="countdown"></div>
+            <div class="countdown-bar"></div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD - Se muestra detrás del popup inicialmente -->
     <div class="dashboard-container">
         <!-- Header superior -->
         <header class="top-header">
@@ -14,9 +50,9 @@
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23007bff'/%3E%3C/svg%3E" alt="Logo" class="header-logo">
             </div>
             <div class="header-right">
-                <div class="power-button">
+                <a href="{{ url_for('logout') }}" class="power-button" title="Cerrar Sesión">
                     <div class="power-icon"></div>
-                </div>
+                </a>
                 <div class="user-info">
                     <span class="user-name">{{ username }}</span>
                     <div class="user-avatar">
@@ -126,10 +162,82 @@
             <!-- Contenido principal -->
             <main class="main-content">
                 <div class="content-area">
-                    <!-- Área de contenido vacía como en la imagen -->
+                    <div class="welcome-message">
+                        <h1>¡Bienvenid@ de vuelta, {{ username }}!</h1>
+                        <p>Explora todo lo que nos une en ETIB.</p>
+                    </div>
                 </div>
             </main>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar hora actual
+            const now = new Date();
+            const timeString = now.toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('currentTime').textContent = timeString;
+
+            // Variables para el popup
+            const overlay = document.getElementById('welcomeOverlay');
+            const popup = document.getElementById('welcomePopup');
+            const closeBtn = document.getElementById('closePopup');
+            const countdownElement = document.getElementById('countdown');
+            
+            // Timer de countdown
+            let countdown = 5;
+
+            // Mostrar popup con animación
+            setTimeout(() => {
+                popup.style.transform = 'scale(1)';
+                popup.style.opacity = '1';
+            }, 100);
+
+            // Función para cerrar popup
+            function closePopup() {
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                popup.style.transform = 'scale(0.8)';
+            }
+
+            // Función para actualizar countdown
+            function updateCountdown() {
+                if (countdown > 0) {
+                    countdownElement.textContent = `Cerrando automáticamente en ${countdown} segundos...`;
+                    countdown--;
+                    setTimeout(updateCountdown, 1000);
+                } else {
+                    closePopup();
+                }
+            }
+
+            // Iniciar countdown
+            updateCountdown();
+
+            // Cerrar con botón
+            closeBtn.addEventListener('click', closePopup);
+
+            // Cerrar con click fuera del popup
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    closePopup();
+                }
+            });
+
+            // Cerrar con tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closePopup();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

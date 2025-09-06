@@ -25,5 +25,5 @@ def get_user_name(username):
     """
     user = USERS.get(username)
     if user:
-        return user['name']
+        return user['name'] 
     return username

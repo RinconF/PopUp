@@ -31,7 +31,7 @@ def login_view():
 def welcome():
     if 'username' not in session:
         return redirect(url_for('login_view'))
-    return render_template('welcome_popup.html', 
+    return render_template('dashboard.html', 
                          username=session.get('user_fullname', session['username']))
 
 @app.route('/dashboard')
