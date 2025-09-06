@@ -19,16 +19,6 @@ def login(username, password):
     
     return username in valid_users and valid_users[username] == password
 
-def login(username, password):
-    """
-    Función de autenticación simple
-    Retorna True si las credenciales son válidas, False en caso contrario
-    """
-    user = USERS.get(username)
-    if user and user['password'] == password:
-        return True
-    return False
-
 def get_user_name(username):
     """
     Obtiene el nombre completo del usuario

@@ -1,14 +1,14 @@
- * {
-            margin: 0;
-            padding: 0;
+ /* * {
+            margin: 1px;
+            padding: 1px;
             box-sizing: border-box;
-        }
+        }s */
 
-        body {
+        /* body {
             font-family: 'Arial', sans-serif;
             background: #f5f7fa;
             overflow-x: auto;
-        }
+        } */
 
         .mockup-container {
             padding: 20px;
@@ -31,13 +31,13 @@
             margin: 0 auto;
         }
 
-        .screen-mockup {
+        /* .screen-mockup {
             background: white;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             transition: transform 0.3s ease;
-        }
+        } */
 
         .screen-mockup:hover {
             transform: translateY(-5px);
@@ -52,11 +52,11 @@
             font-size: 1.1rem;
         }
 
-        .screen-content {
-            height: 500px;
-            overflow: hidden;
-            position: relative;
-        }
+        /* .screen-content {
+            padding-top: 20%;
+            height: 50%;
+            position: center;
+        } */
 
         /* LOGIN SCREEN */
         .login-screen {
@@ -231,12 +231,13 @@
         .popup-mockup {
             background: white;
             border-radius: 15px;
-            padding: 30px;
+            align-content: center;
+            padding: 50px; 
             max-width: 350px;
             width: 90%;
             text-align: center;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-            position: relative;
+            position: center;
         }
 
         .success-icon-mockup {
@@ -460,6 +461,88 @@
             gap: 8px;
             justify-content: center;
         }
+
+        /* Estilos adicionales para mensajes de error y credenciales */
+
+.error-messages {
+    margin-bottom: 15px;
+}
+
+.error-message {
+    background: #ffe6e6;
+    color: #d63031;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #d63031;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.credentials-help {
+    padding: 20px;
+    background: #f8f9fa;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.credentials-help h3 {
+    color: #2d3436;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.credential-item {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #74b9ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.credential-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-left-color: #0984e3;
+}
+
+.credential-item strong {
+    color: #2d3436;
+    font-size: 1rem;
+}
+
+.credential-item code {
+    background: #e9ecef;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #fd79a8;
+    font-weight: bold;
+}
+
+/* Mejorar el formulario */
+.login-form-mockup {
+    width: 100%;
+    max-width: 280px;
+}
+
+.input-mockup:focus {
+    outline: none;
+    border-color: #74b9ff;
+    box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.1);
+}
+
+.login-btn-mockup:hover {
+    background: #e84393;
+    transform: translateY(-1px);
+}
+
+.login-btn-mockup:active {
+    transform: translateY(0);
+}
 
         .action-icon-mockup {
             font-size: 1rem;
