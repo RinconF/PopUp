@@ -8,7 +8,7 @@
     <title>Dashboard - Mi ETIB</title>
 </head>
 <body>
-    <!-- POPUP OVERLAY - Se muestra encima del dashboard -->
+    <!-- POPUP OVERLAY DE BIENVENIDA - Se muestra encima del dashboard -->
     <div class="welcome-overlay" id="welcomeOverlay">
         <div class="welcome-popup" id="welcomePopup">
             <div class="popup-logo">
@@ -39,6 +39,34 @@
             
             <div class="countdown" id="countdown"></div>
             <div class="countdown-bar"></div>
+        </div>
+    </div>
+
+    <!-- POPUP DE ESTADÍSTICAS MENSUALES -->
+    <div class="stats-overlay" id="statsOverlay" style="display: none;">
+        <div class="stats-popup" id="statsPopup">
+            <div class="stats-header">
+                <div class="stats-icon">📊</div>
+                <h2>¡Excelente Trabajo!</h2>
+            </div>
+            
+            <div class="stats-content">
+                <p class="stats-message" id="statsMessage">
+                    Gracias a empleados como tú, ETIB mantiene 
+                    <span class="punctuality-percent" id="punctualityPercent">95</span>% de puntualidad
+                </p>
+                <div class="stats-visual">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span id="progressText">Excelencia Operacional</span>
+                    </div>
+                </div>
+                <p class="stats-subtitle">¡Sigues siendo parte del éxito de ETIB!</p>
+            </div>
+            
+            <button class="stats-close-btn" id="closeStatsPopup">¡Entendido!</button>
         </div>
     </div>
 
@@ -185,14 +213,14 @@
             });
             document.getElementById('currentTime').textContent = timeString;
 
-            // Variables para el popup
+            // Variables para el popup de bienvenida
             const overlay = document.getElementById('welcomeOverlay');
             const popup = document.getElementById('welcomePopup');
             const closeBtn = document.getElementById('closePopup');
             const countdownElement = document.getElementById('countdown');
             
             // Timer de countdown
-            let countdown = 5;
+            let countdown = 50000;
 
             // Mostrar popup con animación
             setTimeout(() => {
@@ -200,11 +228,14 @@
                 popup.style.opacity = '1';
             }, 100);
 
-            // Función para cerrar popup
-            function closePopup() {
+            // Función para cerrar popup de bienvenida
+            function closeWelcomePopup() {
                 overlay.style.opacity = '0';
                 overlay.style.visibility = 'hidden';
                 popup.style.transform = 'scale(0.8)';
+                
+                // Verificar popup mensual después de cerrar el de bienvenida
+                setTimeout(checkMonthlyPopup, 1000);
             }
 
             // Función para actualizar countdown
@@ -214,7 +245,7 @@
                     countdown--;
                     setTimeout(updateCountdown, 1000);
                 } else {
-                    closePopup();
+                    closeWelcomePopup();
                 }
             }
 
@@ -222,21 +253,90 @@
             updateCountdown();
 
             // Cerrar con botón
-            closeBtn.addEventListener('click', closePopup);
+            closeBtn.addEventListener('click', closeWelcomePopup);
 
             // Cerrar con click fuera del popup
             overlay.addEventListener('click', function(e) {
                 if (e.target === overlay) {
-                    closePopup();
+                    closeWelcomePopup();
                 }
             });
 
             // Cerrar con tecla Escape
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
-                    closePopup();
+                    closeWelcomePopup();
                 }
             });
+
+            // FUNCIONES PARA EL POPUP MENSUAL DE ESTADÍSTICAS
+            async function checkMonthlyPopup() {
+                try {
+                    const response = await fetch('/check_monthly_popup');
+                    const data = await response.json();
+                    
+                    if (data.show) {
+                        showStatsPopup(data.punctuality, data.message);
+                    }
+                } catch (error) {
+                    console.log('Error checking monthly popup:', error);
+                }
+            }
+
+            function showStatsPopup(punctuality, message) {
+                const statsOverlay = document.getElementById('statsOverlay');
+                const statsPopup = document.getElementById('statsPopup');
+                const percentElement = document.getElementById('punctualityPercent');
+                const messageElement = document.getElementById('statsMessage');
+                const progressFill = document.getElementById('progressFill');
+                const closeStatsBtn = document.getElementById('closeStatsPopup');
+                
+                // Configurar datos
+                percentElement.textContent = punctuality;
+                messageElement.innerHTML = message.replace(punctuality + '%', `<span class="punctuality-percent">${punctuality}%</span>`);
+                
+                // Mostrar popup
+                statsOverlay.style.display = 'flex';
+                setTimeout(() => {
+                    statsPopup.style.transform = 'scale(1)';
+                    statsPopup.style.opacity = '1';
+                    
+                    // Animar barra de progreso
+                    setTimeout(() => {
+                        progressFill.style.width = punctuality + '%';
+                    }, 500);
+                }, 100);
+                
+                // Cerrar popup
+                closeStatsBtn.addEventListener('click', closeStatsPopup);
+                
+                // Cerrar con click fuera del popup
+                statsOverlay.addEventListener('click', function(e) {
+                    if (e.target === statsOverlay) {
+                        closeStatsPopup();
+                    }
+                });
+            }
+
+            async function closeStatsPopup() {
+                const statsOverlay = document.getElementById('statsOverlay');
+                const statsPopup = document.getElementById('statsPopup');
+                
+                // Marcar como mostrado en el servidor
+                try {
+                    await fetch('/mark_popup_shown', { method: 'POST' });
+                } catch (error) {
+                    console.log('Error marking popup as shown:', error);
+                }
+                
+                // Cerrar con animación
+                statsPopup.style.transform = 'scale(0.8)';
+                statsPopup.style.opacity = '0';
+                
+                setTimeout(() => {
+                    statsOverlay.style.display = 'none';
+                }, 400);
+            }
         });
     </script>
 </body>
