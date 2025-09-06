@@ -1,23 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
-    <title>Login</title>
+    <title>Mi ETIB - Login</title>
 </head>
 <body>
-    <form method="post">
-        <input type="text" name="username" placeholder="Usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Ingresar</button>
-    </form>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul>
-          {% for message in messages %}
-            <li>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-</body>
-</html>
+    <div class="mockup-container">
+        <h1 class="mockup-title">🚌 MI ETIB - Sistema Completo</h1>
+        
+        <div class="screens-grid">
+            <!-- LOGIN SCREEN -->
+            <div class="screen-mockup">
+                <div class="screen-header">
+                    📱 Pantalla de Login
+                </div>
+                <div class="screen-content">
+                    <div class="login-screen">
+                        <div class="login-left">
+                            <div class="login-logo">e</div>
+                            <div class="login-welcome">
+                                <h1>¡BIENVENIDO!</h1>
+                                <h2>MI ETIB</h2>
+                                <div class="people-icons">👥 👤 👥 👤 👥</div>
+                                <div class="version-text">
+                                    MIETIB V13.06.2025 [GA] ©<br>
+                                    ETIB SAS 2025
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-right">
+                            <div class="login-form-mockup">
+                                <div class="login-header-mockup">
+                                    <div class="user-icon-mockup">👤</div>
+                                    <h3 class="login-title">INICIO<br>DE<br>SESIÓN</h3>
+                                </div>
+                                
+                                <input type="text" class="input-mockup" placeholder="Número de Cédula" value="12345678">
+                                <input type="password" class="input-mockup" placeholder="Contraseña" value="•••••">
+                                <button class="login-btn-mockup">INGRESAR</button>
+                                
+                                <div class="forgot-link">
+                                    🔒 RECUPERAR CONTRASEÑA
+                                </div>
+                            </div>
+                            
+                            <div class="bottom-logo-mockup">
+                                <div class="logo-e-small">e</div>
+                                <span class="logo-text-small">etib</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
