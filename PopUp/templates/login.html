@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/welcome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <title>Mi ETIB - Login</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- LOGIN FORM -->
+        <div class="form-box login">
+            <form method="POST" action="{{ url_for('login_view') }}" id="loginForm">
+                <h1>Iniciar Sesión</h1>
+                
+                <!-- Mostrar mensajes de error de Flask -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="error-messages">
+                            {% for message in messages %}
+                                <div class="error-message">⚠️ {{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                
+                <div class="input-box">
+                    <input type="text" 
+                           name="username" 
+                           placeholder="Número de Cédula o Usuario" 
+                           required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                
+                <div class="input-box">
+                    <input type="password" 
+                           name="password" 
+                           placeholder="Contraseña" 
+                           required>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                                
+                <button type="submit" class="btn">Ingresar</button>
+                
+                <p>Redes sociales</p>
+                <div class="social-icons">
+                    <a href="#"><i class='bx bxl-google'></i></a>
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </form>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div class="form-box register">
+            <form method="POST" action="{{ url_for('register_view') }}" id="registerForm">
+                <h1>Restabler contraseña</h1>
+                
+                <div class="input-box">
+                    <input type="text" 
+                           name="username" 
+                           placeholder="Número de Cédula" 
+                           required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                
+                <div class="input-box">
+                    <input type="email" 
+                           name="email" 
+                           placeholder="Fecha de expedición (dd-mm-aaaa)" 
+                           required>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                            
+                <button type="submit" class="btn">Registrarse</button>
+                
+                <p>Redes sociales</p>
+                <div class="social-icons">
+                    <a href="#"><i class='bx bxl-google'></i></a>
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </form>
+        </div>
+
+        <!-- TOGGLE BOX -->
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h1>¡Bienvenido!</h1>
+                <button class="btn register-btn" onclick="toggleForm()">¿Olvidaste tu contraseña?</button>
+            </div>
+            
+            <div class="toggle-panel toggle-right">
+                <h1>¡Bienvenido de vuelta!</h1>
+                <p>¿Ya tienes una cuenta?</p>
+                <button class="btn login-btn" onclick="toggleForm()">Iniciar Sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREDENCIALES DE PRUEBA -->
+    <div class="credentials-help">
+        <h4>🔑 Credenciales de Prueba:</h4>
+        <div class="credential-item" onclick="fillCredentials('admin', 'admin')">
+            <strong>Admin:</strong> <code>admin</code> / <code>admin</code>
+        </div>
+        <div class="credential-item" onclick="fillCredentials('12345678', '12345')">
+            <strong>Juan:</strong> <code>12345678</code> / <code>12345</code>
+        </div>
+        <div class="credential-item" onclick="fillCredentials('87654321', 'password')">
+            <strong>María:</strong> <code>87654321</code> / <code>password</code>
+        </div>
+        <div class="credential-item" onclick="fillCredentials('11111111', '11111')">
+            <strong>Carlos:</strong> <code>11111111</code> / <code>11111</code>
+        </div>
+    </div>
+
+    <script>
+        // Toggle entre formularios de login y registro
+        function toggleForm() {
+            const container = document.getElementById('container');
+            container.classList.toggle('active');
+        }
+
+        // Auto-llenar credenciales de prueba
+        function fillCredentials(username, password) {
+            const container = document.getElementById('container');
+            const isLoginVisible = !container.classList.contains('active');
+            
+            if (!isLoginVisible) {
+                toggleForm(); // Cambiar a login si está en registro
+                setTimeout(() => {
+                    fillLoginInputs(username, password);
+                }, 300); // Esperar a que termine la animación
+            } else {
+                fillLoginInputs(username, password);
+            }
+        }
+
+        function fillLoginInputs(username, password) {
+            const loginForm = document.querySelector('.form-box.login');
+            const usernameInput = loginForm.querySelector('input[name="username"]');
+            const passwordInput = loginForm.querySelector('input[name="password"]');
+            
+            if (usernameInput && passwordInput) {
+                usernameInput.value = username;
+                passwordInput.value = password;
+                
+                // Efecto visual
+                usernameInput.focus();
+                setTimeout(() => passwordInput.focus(), 200);
+                setTimeout(() => usernameInput.focus(), 400);
+            }
+        }
+
+        // Efectos adicionales
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto en botones
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95) translateY(-2px)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-2px)';
+                    }, 150);
+                });
+            });
+
+            // Validación de formularios
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    const inputs = this.querySelectorAll('input[required]');
+                    let valid = true;
+                    
+                    inputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            input.style.background = '#ffe6e6';
+                            valid = false;
+                        } else {
+                            input.style.background = '#f0f0f0';
+                        }
+                    });
+                    
+                    if (!valid) {
+                        e.preventDefault();
+                        alert('Por favor, completa todos los campos requeridos.');
+                    }
+                });
+            });
+
+            // Limpiar estilos de error al escribir
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.style.background = '#f0f0f0';
+                });
+            });
+        });
+
+        // Integración con el sistema Flask existente
+        {% if request.endpoint == 'login_view' and request.method == 'GET' %}
+        // Si hay parámetros específicos de Flask, manejarlos aquí
+        {% endif %}
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <title>Bienvenido - Mi ETIB</title>
+</head>
+<body>
+            <div class="screen-mockup">
+                <div class="screen-content">
+                    <div class="welcome-popup-screen">
+                        <div class="popup-mockup">
+                            <div class="popup-logo-mockup">
+                                <div class="logo-e-small">e</div>
+                                <span class="logo-text-small">etib</span>
+                            </div>
+                            
+                            <div class="success-icon-mockup">✓</div>
+                            <h2 class="popup-title">¡Bienvenido al Sistema!</h2>
+                            
+                            <div class="user-greeting">
+                                <h3>Hola, <span class="username-highlight">{{ username}}</span></h3>
+                                <p>Has iniciado sesión exitosamente en MI ETIB</p>
+                            </div>
+                            
+                            <div class="system-info-mockup">
+                                <p><strong>Sistema:</strong> MI ETIB v13.06.2025</p>
+                                <p><strong>Hora de acceso:</strong> 6 sep 2025, 14:30:25</p>
+                            </div>
+                            
+                            <button class="continue-btn-mockup">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <script>
+        // Agregar interactividad para demostración
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto hover en las tarjetas
+            const cards = document.querySelectorAll('.screen-mockup');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Simulación de clic en botones
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+        });
+
+        // Timer de 5 segundos para redirección automática
+        let countdown = 5;
+        const countdownElement = document.createElement('div');
+        countdownElement.style.cssText = `
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.8rem;
+        color: #636e72;
+        text-align: center;
+        `;
+
+        // Agregar el elemento al popup
+        const popup = document.querySelector('.popup-mockup');
+        popup.appendChild(countdownElement);
+
+        // Función para actualizar el contador
+        const updateCountdown = () => {
+        countdownElement.textContent = `Redirigiendo automáticamente en ${countdown} segundos...`;
+        
+        if (countdown <= 0) {
+            window.location.href = '/dashboard';
+        } else {
+            countdown--;
+            setTimeout(updateCountdown, 1000);
+        }
+        };
+
+        // Iniciar el countdown cuando cargue la página
+        document.addEventListener('DOMContentLoaded', updateCountdown);
+
+        // Permitir saltar el timer haciendo clic en "Continuar"
+        const continueBtn = document.querySelector('.continue-btn-mockup');
+        if (continueBtn) {
+        continueBtn.addEventListener('click', () => {
+            window.location.href = '/dashboard';
+        });
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,591 @@
+ /* * {
+            margin: 1px;
+            padding: 1px;
+            box-sizing: border-box;
+        }s */
+
+        /* body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f7fa;
+            overflow-x: auto;
+        } */
+
+        .mockup-container {
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .mockup-title {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* .screen-mockup {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        } */
+
+        .screen-mockup:hover {
+            transform: translateY(-5px);
+        }
+
+        .screen-header {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* .screen-content {
+            padding-top: 20%;
+            height: 50%;
+            position: center;
+        } */
+
+        /* LOGIN SCREEN */
+        .login-screen {
+            display: flex;
+            height: 100%;
+        }
+
+        .login-left {
+            flex: 1.2;
+            background: #2d3436;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .login-welcome {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .login-welcome h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .login-welcome h2 {
+            font-size: 1.3rem;
+            color: #74b9ff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .people-icons {
+            font-size: 2rem;
+            margin: 20px 0;
+            opacity: 0.8;
+        }
+
+        .version-text {
+            font-size: 0.7rem;
+            color: #b2bec3;
+            margin-top: 30px;
+            line-height: 1.3;
+        }
+
+        .login-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            background: #fd79a8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .login-right {
+            flex: 1;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .login-form-mockup {
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .login-header-mockup {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .user-icon-mockup {
+            width: 50px;
+            height: 50px;
+            background: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.2rem;
+        }
+
+        .login-title {
+            color: #74b9ff;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .input-mockup {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            background: #f8f9fa;
+        }
+
+        .login-btn-mockup {
+            width: 100%;
+            padding: 12px;
+            background: #fd79a8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #fd79a8;
+        }
+
+        .bottom-logo-mockup {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo-e-small {
+            width: 25px;
+            height: 25px;
+            background: #fd79a8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .logo-text-small {
+            font-size: 1rem;
+            color: #fd79a8;
+            font-weight: bold;
+        }
+
+        /* WELCOME POPUP */
+        .welcome-popup-screen {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #6c5ce7 100%);
+            background-image: 
+                linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%);
+            background-size: 40px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .popup-mockup {
+            background: white;
+            border-radius: 15px;
+            align-content: center;
+            padding: 50px; 
+            max-width: 350px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            position: center;
+        }
+
+        .success-icon-mockup {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00b894, #00a085);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .popup-title {
+            color: #2d3436;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .user-greeting {
+            margin-bottom: 20px;
+        }
+
+        .user-greeting h3 {
+            color: #2d3436;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .username-highlight {
+            color: #74b9ff;
+            font-weight: bold;
+        }
+
+        .system-info-mockup {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #74b9ff;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            text-align: left;
+        }
+
+        .continue-btn-mockup {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .popup-logo-mockup {
+            position: absolute;
+            top: -15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* DASHBOARD */
+        .dashboard-screen {
+            background: #f8f9fa;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dashboard-header-mockup {
+            background: linear-gradient(135deg, #2d3436, #636e72);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left-mockup {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dashboard-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dashboard-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .header-right-mockup {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.8rem;
+        }
+
+        .user-info-mockup {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logout-btn-mockup {
+            background: #fd79a8;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .dashboard-main-mockup {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-banner h2 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .stats-grid-mockup {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card-mockup {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon-mockup {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .stat-info-mockup h3 {
+            font-size: 0.7rem;
+            color: #636e72;
+            margin-bottom: 3px;
+        }
+
+        .stat-number-mockup {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3436;
+        }
+
+        .actions-section {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .actions-title {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #2d3436;
+            font-weight: 600;
+        }
+
+        .action-buttons-mockup {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .action-btn-mockup {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        /* Estilos adicionales para mensajes de error y credenciales */
+
+.error-messages {
+    margin-bottom: 15px;
+}
+
+.error-message {
+    background: #ffe6e6;
+    color: #d63031;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #d63031;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.credentials-help {
+    padding: 20px;
+    background: #f8f9fa;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.credentials-help h3 {
+    color: #2d3436;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.credential-item {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #74b9ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.credential-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-left-color: #0984e3;
+}
+
+.credential-item strong {
+    color: #2d3436;
+    font-size: 1rem;
+}
+
+.credential-item code {
+    background: #e9ecef;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #fd79a8;
+    font-weight: bold;
+}
+
+/* Mejorar el formulario */
+.login-form-mockup {
+    width: 100%;
+    max-width: 280px;
+}
+
+.input-mockup:focus {
+    outline: none;
+    border-color: #74b9ff;
+    box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.1);
+}
+
+.login-btn-mockup:hover {
+    background: #e84393;
+    transform: translateY(-1px);
+}
+
+.login-btn-mockup:active {
+    transform: translateY(0);
+}
+
+        .action-icon-mockup {
+            font-size: 1rem;
+        }
+
+        /* Navigation arrows */
+        .nav-arrows {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #74b9ff;
+            cursor: pointer;
+            z-index: 1000;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrows:hover {
+            color: #0984e3;
+            transform: translateY(-50%) scale(1.2);
+        }
+
+        .nav-left {
+            left: 20px;
+        }
+
+        .nav-right {
+            right: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .screens-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .mockup-title {
+                font-size: 2rem;
+            }
+            
+            .nav-arrows {
+                display: none;
+            }
+        }
